@@ -1,0 +1,118 @@
+.contact {
+    background: linear-gradient(180deg, var(--color-bg-secondary) 0%, var(--color-bg-primary) 100%);
+}
+
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: var(--spacing-3xl);
+    align-items: start;
+}
+
+.contact-content-centered {
+    grid-template-columns: 1fr;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Contact Info */
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+}
+
+.info-card {
+    padding: var(--spacing-xl);
+}
+
+.info-card h3 {
+    font-size: 1.75rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.info-card p {
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    margin: 0;
+}
+
+.contact-methods {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.contact-method {
+    padding: var(--spacing-lg);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    transition: all var(--transition-base);
+    text-decoration: none;
+}
+
+.contact-method:hover {
+    transform: translateX(10px);
+}
+
+.method-icon {
+    font-size: 2rem;
+    filter: drop-shadow(0 0 15px rgba(99, 102, 241, 0.5));
+}
+
+.method-details {
+    flex: 1;
+}
+
+.method-details h4 {
+    margin: 0 0 var(--spacing-xs) 0;
+    font-size: 1.1rem;
+    color: var(--color-text-primary);
+}
+
+.method-details p {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+}
+
+.contact-method svg {
+    color: var(--color-accent-primary);
+    transition: transform var(--transition-base);
+}
+
+.contact-method:hover svg {
+    transform: translateX(5px);
+}
+
+/* Method Color Variants */
+.method-blue:hover {
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
+}
+
+.method-green:hover {
+    box-shadow: 0 0 30px rgba(16, 185, 129, 0.3);
+}
+
+.method-purple:hover {
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
+}
+
+.method-pink:hover {
+    box-shadow: 0 0 30px rgba(236, 72, 153, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-2xl);
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-method:hover {
+        transform: translateX(5px);
+    }
+}
