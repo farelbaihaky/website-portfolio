@@ -52,9 +52,31 @@ const Navbar = () => {
                     ))}
                 </ul>
 
-                <a href="/cv.pdf" download className="btn btn-primary navbar-cta">
-                    Download CV
-                </a>
+                <a
+    href="https://farelbaihaky.vercel.app/cv.pdf"
+    className="btn btn-primary navbar-cta"
+    onClick={(e) => {
+        e.preventDefault(); // Mencegah pindah halaman langsung
+        const cvUrl = 'https://farelbaihaky.vercel.app/cv.pdf';
+
+        // --- 1. PROSES DOWNLOAD FILE ---
+        const link = document.createElement('a');
+        link.href = cvUrl;
+        link.download = 'CV_Farel_Baihaky.pdf'; // Nama file hasil download
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        // --- 2. TAMPILKAN CV (DI TAB YANG SAMA) ---
+        // Kita beri jeda 1 detik (1000ms) agar download sempat mulai
+        // sebelum halaman browser berubah menjadi PDF reader.
+        setTimeout(() => {
+            window.location.href = cvUrl;
+        }, 1000);
+    }}
+>
+    Download CV
+</a>
             </div>
         </nav>
     )
