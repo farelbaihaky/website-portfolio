@@ -75,7 +75,7 @@ const Navbar = () => {
         }, 1000);
     }}
 >
-    Download CV
+     View Full Resume
 </a>
             </div>
         </nav>
