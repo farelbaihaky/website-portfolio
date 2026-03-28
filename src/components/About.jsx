@@ -7,7 +7,6 @@ const About = () => {
                 <div className="section-header">
                     <span className="section-label badge">About Me</span>
                     <h2>Dedicated to Software Quality</h2>
-                    <p>Turning bugs into features and chaos into quality</p>
                 </div>
 
                 <div className="about-content">
