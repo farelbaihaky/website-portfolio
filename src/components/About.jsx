@@ -24,7 +24,7 @@ const About = () => {
                     </div>
 
                     <div className="about-text">
-                        <p className="about-intro">
+                        {/* <p className="about-intro">
                             <strong className="gradient-text">Quality is not an act, it's a habit.</strong>
                             Dedicated to delivering bug-free user experiences, I specialize in transforming 
                             complex manual test scenarios into robust Cypress automation scripts, ensuring stability and speed in every release.
@@ -35,7 +35,7 @@ const About = () => {
                             resolve issues effectively. Currently working as Quality Assurance at PT Global Loyalty Indonesia,
                             I specialize in both manual and automation testing using tools like Cypress, and API testing
                             with Postman. I'm eager to contribute to delivering high-quality and reliable software products.
-                        </p>
+                        </p> */}
 
                         <div className="about-highlights">
                             <div className="highlight-item glass-card">

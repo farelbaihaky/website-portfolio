@@ -152,6 +152,28 @@
     line-height: 1.4;
 }
 
+.cert-view-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-xl);
+    padding: var(--spacing-md) var(--spacing-2xl);
+    background: var(--gradient-primary);
+    color: white;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-radius: var(--radius-full);
+    text-decoration: none;
+    transition: all var(--transition-base);
+    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+}
+
+.cert-view-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(99, 102, 241, 0.5);
+    opacity: 0.9;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .skills-simple-grid {

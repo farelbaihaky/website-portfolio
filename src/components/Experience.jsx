@@ -10,14 +10,14 @@ const Experience = () => {
             type: 'Internship',
             description: 'Responsible for ensuring software quality through comprehensive manual and automation testing',
             responsibilities: [
-                'Perform functional testing on web and mobile applications',
-                'Develop and maintain automation test scripts using Cypress',
-                'Conduct API testing using Postman and validate data integrity',
-                'Execute regression and User Acceptance Testing (UAT)',
-                'Create and maintain comprehensive QA documentation',
-                'Collaborate with development team to identify and resolve issues'
+                'Successfully managed end-to-end QA lifecycle for 6 diverse projects, encompassing web applications and complex WhatsApp Chatbot integrations via backend APIs.',
+                'Engineered robust E2E automation suites using Cypress, significantly reducing manual regression testing time and increasing overall deployment confidence.',
+                'Identified and systematically documented 370+ bugs across all projects, including a major high-scale system with over 207 identified issues, ensuring rapid resolution and 100% feature stability.',
+                'Optimized data integrity by performing rigorous data validation on MySQL relational databases using DBeaver, ensuring zero data discrepancies in production.',
+                'Spearheaded User Acceptance Testing (UAT) for all 6 projects, aligning technical deliverables with business requirements to achieve high stakeholder satisfaction.',
+                'Designed comprehensive test scenarios and bug reports that streamlined the debugging process, facilitating a faster and more efficient development cycle.'
             ],
-            technologies: ['Cypress', 'Postman', 'JIRA', 'MySQL', 'DBeaver']
+            technologies: ['Cypress', 'PostgreSQL', 'DBeaver', 'Google Sheets']
         },
         {
             title: 'Software Quality Assurance',
@@ -27,17 +27,16 @@ const Experience = () => {
             type: 'Internship',
             description: 'Conducted comprehensive testing for web and mobile applications with focus on functionality and reliability',
             responsibilities: [
-                'Conducted testing using Apache JMeter for performance analysis',
-                'Performed data validation testing on MySQL databases using DBeaver',
-                'Executed functional API testing utilizing Postman',
-                'Performed functional testing on Website and Android mobile applications',
-                'Executed web application testing to ensure feature reliability',
-                'Conducted User Acceptance Testing (UAT) with stakeholders'
+                'Managed QA for 12 projects, executing manual, functional, and performance testing (Apache JMeter) across Web and Android platforms.',
+                'Identified and tracked 100+ bugs using Postman for API testing and DBeaver for MySQL database validation to ensure data integrity.',
+                'Benchmarked 3 mobile devices and authored technical documentation to determine optimal hardware compatibility for end-users.',
+                'Executed end-to-end testing, including Web/Mobile functional tests and User Acceptance Testing (UAT), to guarantee feature reliability.',
+                'Prepared and maintained comprehensive QA documentation, ensuring all test cases and results were structured for seamless production release.'
             ],
             technologies: ['Apache JMeter', 'Postman', 'MySQL', 'DBeaver', 'JIRA']
         },
         {
-            title: 'Data Entry Specialist',
+            title: 'Data Management',
             company: 'Telkom Indonesia',
             period: 'June 2024 - August 2024',
             location: 'Onsite, Indonesia',
@@ -88,9 +87,7 @@ const Experience = () => {
             <div className="container">
                 <div className="section-header">
                     <span className="section-label badge">Career Journey</span>
-                    <h2>Professional Experience</h2>
-                    <p>My path in quality assurance and software testing</p>
-                </div>
+                    <h2>Professional Experience</h2>                </div>
 
                 <div className="timeline">
                     {experiences.map((exp, index) => (

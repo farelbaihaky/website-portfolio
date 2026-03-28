@@ -22,7 +22,7 @@ const Skills = () => {
             color: 'green',
             skills: [
                 'Cypress',
-                'Test Automation',
+                'Playwright',
                 'CI/CD Integration'
             ]
         },
@@ -48,7 +48,9 @@ const Skills = () => {
                 'JavaScript',
                 'Python',
                 'Java',
-                'SQL',
+                'MySQL',
+                'PostgreSQL',
+                'PHP',
                 'HTML/CSS'
             ]
         },
@@ -67,8 +69,8 @@ const Skills = () => {
     ]
 
     const certifications = [
-        { name: 'BNSP System Analyst', icon: '🏆' },
-        { name: 'User Interface Design (Myskill)', icon: '🎨' },
+        { name: 'Certified System Analyst (BNSP)', icon: '🏆' },
+        { name: 'User Interface Design (MySkill)', icon: '🎨' },
         { name: 'IEEE ICOICT 2025 Author', icon: '📝' },
         { name: 'GPA 3.75 Cumlaude - Telkom University', icon: '🎓' }
     ]
@@ -78,9 +80,7 @@ const Skills = () => {
             <div className="container">
                 <div className="section-header">
                     <span className="section-label badge">Skills & Expertise</span>
-                    <h2>Technical Proficiency</h2>
-                    <p>My technical skills and competencies</p>
-                </div>
+                    <h2>Technical Proficiency</h2>                </div>
 
                 <div className="skills-simple-grid">
                     {skillsData.map((category, idx) => (
@@ -111,6 +111,20 @@ const Skills = () => {
                             </div>
                         ))}
                     </div>
+
+                    <a
+                        href="https://drive.google.com/drive/folders/1Cq1GcPCVHYyBahks7cLmyocgbE76QDED?usp=drive_link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="cert-view-btn"
+                    >
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+                            <polyline points="10 17 15 12 10 7" />
+                            <line x1="15" y1="12" x2="3" y2="12" />
+                        </svg>
+                        View All Certificates
+                    </a>
                 </div>
             </div>
         </section>

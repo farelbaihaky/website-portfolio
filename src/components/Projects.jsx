@@ -46,7 +46,6 @@ const Projects = () => {
                 <div className="section-header">
                     <span className="section-label badge">Portfolio</span>
                     <h2>Featured Project</h2>
-                    <p>Real-world test automation project & achievements</p>
                 </div>
 
                 {/* Hero Project Card */}

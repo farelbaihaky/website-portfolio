@@ -9,7 +9,7 @@ const Hero = () => {
 
     const phrases = [
         'Quality Assurance Engineer',
-        'Automation Testing Specialist'
+        'Automation Testing'
     ]
 
     useEffect(() => {
@@ -70,9 +70,7 @@ const Hero = () => {
                     </div>
 
                     <p className="hero-description">
-                        Fresh graduate from Telkom University with a strong passion for software quality.
-                        Experienced in manual testing, automation Cypress, API testing, and documentation.
-                        Detail-oriented and eager to deliver high-quality, reliable software products.
+                        Information Systems Graduate from Telkom University with hands-on internship experience in Quality Assurance. Proven track record in managing 15+ projects and identifying 300+ bugs through manual and automation testing. Driving meaningful impact in a dynamic development team.
                     </p>
 
                     <div className="hero-buttons">
@@ -121,12 +119,12 @@ const Hero = () => {
                 </div>
             </div>
 
-            <div className="scroll-indicator">
+            {/* <div className="scroll-indicator">
                 <div className="mouse">
                     <div className="wheel"></div>
                 </div>
                 <p>Scroll Down</p>
-            </div>
+            </div> */}
         </section>
     )
 }
