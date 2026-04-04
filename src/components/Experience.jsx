@@ -1,6 +1,11 @@
+import { useState } from 'react'
 import './Experience.css'
 
 const Experience = () => {
+    const [openIndex, setOpenIndex] = useState(null)
+
+    const toggle = (i) => setOpenIndex(openIndex === i ? null : i)
+
     const experiences = [
         {
             title: 'IT Quality Assurance',
@@ -83,57 +88,88 @@ const Experience = () => {
                 <h2 className="section-title">Experience</h2>
 
                 <div className="timeline">
-                    {experiences.map((exp, index) => (
-                        <div key={index} className="timeline-item">
-                            <div className="exp-header">
-                                <div>
-                                    <h3>{exp.title}</h3>
-                                    <div className="exp-meta">
-                                        <span className="company">
-                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                                <rect x="2" y="7" width="20" height="14" rx="2" />
-                                                <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+                    {experiences.map((exp, index) => {
+                        const isOpen = openIndex === index
+
+                        return (
+                            <div key={index} className={`timeline-item ${isOpen ? 'timeline-item--open' : ''}`}>
+
+                                {/* Clickable header — always visible */}
+                                <button
+                                    className="exp-toggle"
+                                    onClick={() => toggle(index)}
+                                    aria-expanded={isOpen}
+                                >
+                                    <div className="exp-toggle-left">
+                                        <span className="exp-toggle-indicator">
+                                            <svg
+                                                width="12" height="12"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                strokeWidth="2.5"
+                                                className={`exp-chevron ${isOpen ? 'exp-chevron--open' : ''}`}
+                                            >
+                                                <polyline points="9 18 15 12 9 6" />
                                             </svg>
-                                            {exp.company}
                                         </span>
-                                        <span className="location">
-                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                                                <circle cx="12" cy="10" r="3" />
-                                            </svg>
-                                            {exp.location}
-                                        </span>
+                                        <div className="exp-summary">
+                                            <span className="exp-title">{exp.title}</span>
+                                            <span className="exp-company-inline">
+                                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                                    <rect x="2" y="7" width="20" height="14" rx="2" />
+                                                    <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+                                                </svg>
+                                                {exp.company}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div className="exp-badges">
+                                        <span className="period">{exp.period}</span>
+                                        <span className="type">{exp.type}</span>
+                                    </div>
+                                </button>
+
+                                {/* Collapsible content */}
+                                <div className={`exp-content ${isOpen ? 'exp-content--open' : ''}`}>
+                                    <div className="exp-content-inner">
+                                        <div className="exp-meta-row">
+                                            <span className="location">
+                                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                                    <circle cx="12" cy="10" r="3" />
+                                                </svg>
+                                                {exp.location}
+                                            </span>
+                                        </div>
+
+                                        <p className="exp-description">{exp.description}</p>
+
+                                        <div className="exp-responsibilities">
+                                            <h4>Key Responsibilities</h4>
+                                            <ul>
+                                                {exp.responsibilities.map((resp, i) => (
+                                                    <li key={i}>
+                                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                                                            <polyline points="20 6 9 17 4 12" />
+                                                        </svg>
+                                                        {resp}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+
+                                        <div className="exp-tech">
+                                            {exp.technologies.map((tech, i) => (
+                                                <span key={i} className="tech-tag">{tech}</span>
+                                            ))}
+                                        </div>
                                     </div>
                                 </div>
-                                <div className="exp-badges">
-                                    <span className="period">{exp.period}</span>
-                                    <span className="type">{exp.type}</span>
-                                </div>
-                            </div>
 
-                            <p className="exp-description">{exp.description}</p>
-
-                            <div className="exp-responsibilities">
-                                <h4>Key Responsibilities</h4>
-                                <ul>
-                                    {exp.responsibilities.map((resp, i) => (
-                                        <li key={i}>
-                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                                                <polyline points="20 6 9 17 4 12" />
-                                            </svg>
-                                            {resp}
-                                        </li>
-                                    ))}
-                                </ul>
                             </div>
-
-                            <div className="exp-tech">
-                                {exp.technologies.map((tech, i) => (
-                                    <span key={i} className="tech-tag">{tech}</span>
-                                ))}
-                            </div>
-                        </div>
-                    ))}
+                        )
+                    })}
                 </div>
             </div>
         </section>

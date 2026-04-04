@@ -1,0 +1,56 @@
+/* ============================================================
+   CUSTOM CURSOR — Directional rotating pointer
+   ============================================================ */
+
+/* Hide default cursor everywhere */
+*,
+*::before,
+*::after {
+    cursor: none !important;
+}
+
+.custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 99999;
+    transform: translate(-50%, -50%) rotate(0deg);
+    transition: opacity 200ms ease;
+    will-change: transform, left, top;
+}
+
+.custom-cursor svg {
+    display: block;
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.3));
+    transition: transform 200ms ease;
+}
+
+/* Scale down slightly when clicking */
+.custom-cursor.cursor--clicking svg {
+    transform: scale(0.8);
+    filter: drop-shadow(0 0 8px rgba(227, 94, 41, 0.6));
+}
+
+/* Scale up + color change when hovering links/buttons */
+.custom-cursor.cursor--hover svg {
+    transform: scale(1.25);
+    filter: drop-shadow(0 0 10px rgba(227, 94, 41, 0.8));
+}
+
+.custom-cursor.cursor--hover path {
+    stroke: #e35e29;
+}
+
+/* Only show on non-touch devices */
+@media (hover: none) and (pointer: coarse) {
+    *,
+    *::before,
+    *::after {
+        cursor: auto !important;
+    }
+
+    .custom-cursor {
+        display: none;
+    }
+}

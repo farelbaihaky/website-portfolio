@@ -7,6 +7,7 @@ import Projects from './components/Projects'
 import Experience from './components/Experience'
 import Contact from './components/Contact'
 import Navbar from './components/Navbar'
+import CustomCursor from './components/CustomCursor'
 
 function App() {
   const [isLoading, setIsLoading] = useState(true)
@@ -44,6 +45,7 @@ function App() {
 
   return (
     <div className="app">
+      <CustomCursor />
       <Navbar />
       <main>
         <Hero />
