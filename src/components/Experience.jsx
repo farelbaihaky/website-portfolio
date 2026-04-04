@@ -57,7 +57,7 @@ const Experience = () => {
             company: 'Telkom University',
             period: 'Feb 2024 – Jun 2024',
             location: 'Onsite, Indonesia',
-            type: 'Part-time',
+            type: 'Contract',
             description: 'Guided students in system analysis and design using Visual Paradigm tools',
             responsibilities: [
                 'Guided students in learning system analysis and design using UML diagrams.',
@@ -67,11 +67,11 @@ const Experience = () => {
             technologies: ['Visual Paradigm', 'UML', 'System Analysis']
         },
         {
-            title: 'OOP Practicum Assistant',
+            title: 'Object Oriented Programming Practicum Assistant',
             company: 'Telkom University',
             period: 'Aug 2023 – Dec 2023',
             location: 'Onsite, Indonesia',
-            type: 'Part-time',
+            type: 'Contract',
             description: 'Guided students in Object-Oriented Programming fundamentals in Java',
             responsibilities: [
                 'Guided students in OOP concepts: abstraction, encapsulation, inheritance, and polymorphism.',

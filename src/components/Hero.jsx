@@ -17,7 +17,7 @@ const Hero = () => {
                 </div>
                 <div className="hero-identity">
                     <h1 className="hero-name">Farel Baihaky</h1>
-                    <p className="hero-role">IT Quality Assurance Engineer</p>
+                    <p className="hero-role"></p>
                 </div>
             </div>
 

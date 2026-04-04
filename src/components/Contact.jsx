@@ -4,7 +4,7 @@ const Contact = () => {
     const socials = [
         {
             name: 'LinkedIn',
-            handle: '@farelbaihaky',
+            handle: 'Farel Baihaky',
             url: 'https://linkedin.com/in/farelbaihaky',
             icon: (
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
@@ -16,7 +16,7 @@ const Contact = () => {
         },
         {
             name: 'GitHub',
-            handle: '@farelbaihaky',
+            handle: 'farelbaihaky',
             url: 'https://github.com/farelbaihaky',
             icon: (
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
