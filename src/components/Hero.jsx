@@ -13,7 +13,7 @@ const Hero = () => {
             <div className="hero-profile-card">
                 <div className="hero-avatar-wrap">
                     <img src="/profile.jpg" alt="Farel Baihaky" className="hero-avatar" />
-                    <span className="hero-avatar-badge" title="Open to work">🟢</span>
+                    <span className="hero-avatar-badge" title="Available for Opportunities" />
                 </div>
                 <div className="hero-identity">
                     <h1 className="hero-name">Farel Baihaky</h1>
