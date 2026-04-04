@@ -1,84 +1,140 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import './Navbar.css'
 
 const Navbar = () => {
-    const [isScrolled, setIsScrolled] = useState(false)
     const [activeSection, setActiveSection] = useState('home')
+    const [menuOpen, setMenuOpen] = useState(false)
+    const clickLockRef = useRef(false)
+    const lockTimerRef = useRef(null)
+
+    const navLinks = [
+        { id: 'home', label: 'Home' },
+        { id: 'about', label: 'About' },
+        { id: 'skills', label: 'Skills' },
+        { id: 'experience', label: 'Experience' },
+        { id: 'projects', label: 'Projects' },
+        { id: 'contact', label: 'Contact' },
+    ]
 
     useEffect(() => {
         const handleScroll = () => {
-            setIsScrolled(window.scrollY > 50)
+            if (clickLockRef.current) return
 
-            // Update active section based on scroll position
-            const sections = ['home', 'about', 'skills', 'projects', 'experience', 'contact']
-            const current = sections.find(section => {
-                const element = document.getElementById(section)
-                if (element) {
-                    const rect = element.getBoundingClientRect()
-                    return rect.top <= 100 && rect.bottom >= 100
+            const scrollPos = window.scrollY + 150
+            const isAtBottom =
+                window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 80
+
+            if (isAtBottom) {
+                setActiveSection('contact')
+                return
+            }
+
+            let current = 'home'
+            for (const link of navLinks) {
+                const el = document.getElementById(link.id)
+                if (el && el.offsetTop <= scrollPos) {
+                    current = link.id
                 }
-                return false
-            })
-            if (current) setActiveSection(current)
+            }
+            setActiveSection(current)
         }
 
-        window.addEventListener('scroll', handleScroll)
+        handleScroll()
+        window.addEventListener('scroll', handleScroll, { passive: true })
         return () => window.removeEventListener('scroll', handleScroll)
     }, [])
 
-    const scrollToSection = (sectionId) => {
-        const element = document.getElementById(sectionId)
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth' })
+    // Close mobile menu on scroll
+    useEffect(() => {
+        const handleScroll = () => setMenuOpen(false)
+        window.addEventListener('scroll', handleScroll, { passive: true })
+        return () => window.removeEventListener('scroll', handleScroll)
+    }, [])
+
+    const scrollToSection = (id) => {
+        clickLockRef.current = true
+        setActiveSection(id)
+        setMenuOpen(false)
+
+        if (lockTimerRef.current) clearTimeout(lockTimerRef.current)
+        lockTimerRef.current = setTimeout(() => {
+            clickLockRef.current = false
+        }, 1000)
+
+        const el = document.getElementById(id)
+        if (el) {
+            const yOffset = -80
+            const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset
+            window.scrollTo({ top: y, behavior: 'smooth' })
         }
     }
 
     return (
-        <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
-            <div className="container navbar-container">
-                <div className="navbar-logo">
+        <>
+            {/* Desktop Navbar */}
+            <nav className="navbar navbar--desktop">
+                <div className="navbar-pill">
+                    <ul className="navbar-menu">
+                        {navLinks.map(link => (
+                            <li key={link.id}>
+                                <button
+                                    className={`nav-link ${activeSection === link.id ? 'active' : ''}`}
+                                    onClick={() => scrollToSection(link.id)}
+                                >
+                                    {link.label}
+                                </button>
+                            </li>
+                        ))}
+                    </ul>
+                    <a
+                        href="/cv.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="navbar-resume-btn"
+                    >
+                        Resume ↗
+                    </a>
+                </div>
+            </nav>
+
+            {/* Mobile Navbar */}
+            <nav className="navbar navbar--mobile">
+                <div className="mobile-navbar-bar">
+                    <span className="mobile-navbar-brand">FB</span>
+                    <button
+                        className={`hamburger ${menuOpen ? 'open' : ''}`}
+                        onClick={() => setMenuOpen(!menuOpen)}
+                        aria-label="Toggle menu"
+                    >
+                        <span /><span /><span />
+                    </button>
                 </div>
 
-                <ul className="navbar-menu">
-                    {['home', 'about', 'skills', 'projects', 'experience', 'contact'].map(item => (
-                        <li key={item}>
-                            <button
-                                onClick={() => scrollToSection(item)}
-                                className={`nav-link ${activeSection === item ? 'active' : ''}`}
-                            >
-                                {item.charAt(0).toUpperCase() + item.slice(1)}
-                            </button>
-                        </li>
-                    ))}
-                </ul>
-
-                <a
-    href="https://farelbaihaky.vercel.app/cv.pdf"
-    className="btn btn-primary navbar-cta"
-    onClick={(e) => {
-        e.preventDefault(); // Mencegah pindah halaman langsung
-        const cvUrl = 'https://farelbaihaky.vercel.app/cv.pdf';
-
-        // --- 1. PROSES DOWNLOAD FILE ---
-        const link = document.createElement('a');
-        link.href = cvUrl;
-        link.download = 'CV_Farel_Baihaky.pdf'; // Nama file hasil download
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-
-        // --- 2. TAMPILKAN CV (DI TAB YANG SAMA) ---
-        // Kita beri jeda 1 detik (1000ms) agar download sempat mulai
-        // sebelum halaman browser berubah menjadi PDF reader.
-        setTimeout(() => {
-            window.location.href = cvUrl;
-        }, 1000);
-    }}
->
-     View Full Resume
-</a>
-            </div>
-        </nav>
+                {/* Mobile Dropdown */}
+                <div className={`mobile-menu ${menuOpen ? 'mobile-menu--open' : ''}`}>
+                    <ul className="mobile-nav-list">
+                        {navLinks.map(link => (
+                            <li key={link.id}>
+                                <button
+                                    className={`mobile-nav-link ${activeSection === link.id ? 'active' : ''}`}
+                                    onClick={() => scrollToSection(link.id)}
+                                >
+                                    {link.label}
+                                </button>
+                            </li>
+                        ))}
+                    </ul>
+                    <a
+                        href="/cv.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mobile-resume-btn"
+                    >
+                        Resume ↗
+                    </a>
+                </div>
+            </nav>
+        </>
     )
 }
 

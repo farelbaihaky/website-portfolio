@@ -1,130 +1,86 @@
-import { useEffect, useState } from 'react'
 import './Hero.css'
 
 const Hero = () => {
-    const [text, setText] = useState('')
-    const [isDeleting, setIsDeleting] = useState(false)
-    const [loopNum, setLoopNum] = useState(0)
-    const [typingSpeed, setTypingSpeed] = useState(150)
-
-    const phrases = [
-        'Quality Assurance Engineer',
-        'Automation Testing'
-    ]
-
-    useEffect(() => {
-        let timer
-        const handleType = () => {
-            const i = loopNum % phrases.length
-            const fullText = phrases[i]
-
-            if (!isDeleting && text === fullText) {
-                timer = setTimeout(() => setIsDeleting(true), 2000)
-                return () => clearTimeout(timer)
-            }
-
-            if (isDeleting && text === '') {
-                setIsDeleting(false)
-                setLoopNum(loopNum + 1)
-                timer = setTimeout(handleType, 500)
-                return () => clearTimeout(timer)
-            }
-
-            setText(current =>
-                isDeleting
-                    ? fullText.substring(0, current.length - 1)
-                    : fullText.substring(0, current.length + 1)
-            )
-
-            const speed = isDeleting ? 50 : 100
-            timer = setTimeout(handleType, speed)
-        }
-
-        timer = setTimeout(handleType, typingSpeed)
-        return () => clearTimeout(timer)
-    }, [text, isDeleting, loopNum])
-
-
-    const scrollToContact = () => {
-        document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
-    }
-
     return (
-        <section id="home" className="hero section">
-            <div className="container">
-                <div className="hero-content">
-                    <div className="hero-badge fade-in-up">
-                        <span className="badge">
-                            <span className="status-dot"></span>
-                            Available for Opportunities
-                        </span>
-                    </div>
+        <section id="home" className="hero">
 
-                    <h1 className="hero-title">
-                        Hi, I'm <span className="gradient-text">Farel Baihaky</span>
-                    </h1>
+            {/* Dotted background with large initials */}
+            <div className="hero-initials-bg">
+                <span className="hero-initials">FB</span>
+            </div>
 
-                    <div className="hero-subtitle">
-                        <span className="typing-text">{text}</span>
-                        <span className="cursor">|</span>
-                    </div>
-
-                    <p className="hero-description">
-                        Information Systems Graduate from Telkom University with hands-on internship experience in Quality Assurance. Proven track record in managing 15+ projects and identifying 300+ bugs through manual and automation testing. Driving meaningful impact in a dynamic development team.
-                    </p>
-
-                    <div className="hero-buttons">
-                        <button onClick={scrollToContact} className="btn btn-primary">
-                            <span>Get In Touch</span>
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                <path d="M5 12h14M12 5l7 7-7 7" />
-                            </svg>
-                        </button>
-                    </div>
-
-                    <div className="hero-stats">
-                        <div className="stat-item">
-                            <div className="stat-number gradient-text">1+</div>
-                            <div className="stat-label">Years Experience</div>
-                        </div>
-                        <div className="stat-divider"></div>
-                        <div className="stat-item">
-                            <div className="stat-number gradient-text">3.75</div>
-                            <div className="stat-label">GPA (Cumlaude)</div>
-                        </div>
-                        <div className="stat-divider"></div>
-                        <div className="stat-item">
-                            <div className="stat-number gradient-text">30+</div>
-                            <div className="stat-label">Projects Done</div>
-                        </div>
-                    </div>
+            {/* Profile block */}
+            <div className="hero-profile-card">
+                <div className="hero-avatar-wrap">
+                    <img src="/profile.jpg" alt="Farel Baihaky" className="hero-avatar" />
+                    <span className="hero-avatar-badge" title="Open to work">🟢</span>
                 </div>
-
-                <div className="hero-visual">
-                    <div className="floating-card card-1 glass-card">
-                        <div className="card-icon">✓</div>
-                        <div className="card-text">Test Passed</div>
-                    </div>
-                    <div className="floating-card card-2 glass-card">
-                        <div className="card-icon">⚡</div>
-                        <div className="card-text">Fast Testing</div>
-                    </div>
-                    <div className="floating-card card-3 glass-card">
-                        <div className="card-icon">🎯</div>
-                        <div className="card-text">100% Coverage</div>
-                    </div>
-                    <div className="hero-circle circle-1"></div>
-                    <div className="hero-circle circle-2"></div>
-                    <div className="hero-circle circle-3"></div>
+                <div className="hero-identity">
+                    <h1 className="hero-name">Farel Baihaky</h1>
+                    <p className="hero-role">IT Quality Assurance Engineer</p>
                 </div>
             </div>
 
-            {/* <div className="scroll-indicator">
-                <div className="mouse">
-                    <div className="wheel"></div>
+            {/* Info Table */}
+            <div className="hero-info-table">
+                <div className="info-row">
+                    <div className="info-cell">
+                        <span className="info-label">Role</span>
+                        <span className="info-value">QA Engineer</span>
+                    </div>
+                   
+                    <div className="info-cell">
+                        <span className="info-label">Status</span>
+                        <span className="info-value info-available">Available for Opportunities</span>
+                    </div>
                 </div>
-                <p>Scroll Down</p>
-            </div> */}
+                <div className="info-row">
+                    <div className="info-cell">
+                        <span className="info-label">Email</span>
+                        <a
+                            href="mailto:farelbaihaky@gmail.com"
+                            className="info-value info-link"
+                        >
+                            farelbaihaky@gmail.com
+                        </a>
+                    </div>
+                    <div className="info-cell">
+                        <span className="info-label">LinkedIn</span>
+                        <a
+                            href="https://linkedin.com/in/farelbaihaky"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="info-value info-link"
+                        >
+                            /farelbaihaky ↗
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            {/* Stats bar */}
+            <div className="hero-stats-bar">
+                <div className="stat-item">
+                    <span className="stat-number">1+</span>
+                    <span className="stat-label">Years Exp</span>
+                </div>
+                <div className="stat-sep" />
+                <div className="stat-item">
+                    <span className="stat-number">370+</span>
+                    <span className="stat-label">Bugs Found</span>
+                </div>
+                <div className="stat-sep" />
+                <div className="stat-item">
+                    <span className="stat-number">15+</span>
+                    <span className="stat-label">Projects</span>
+                </div>
+                <div className="stat-sep" />
+                <div className="stat-item">
+                    <span className="stat-number">3.75</span>
+                    <span className="stat-label">GPA Cumlaude</span>
+                </div>
+            </div>
+
         </section>
     )
 }
