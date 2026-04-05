@@ -1,5 +1,9 @@
 import { useState } from 'react'
 import './Experience.css'
+import logoAlfagift from '../assets/logo/Alfagift.png'
+import logoAksesmu from '../assets/logo/Aksesmu.png'
+import logoTelkomIndonesia from '../assets/logo/Telkom_Indonesia.png'
+import logoTelkomUniversity from '../assets/logo/Telkom_University.png'
 
 const Experience = () => {
     const [openIndex, setOpenIndex] = useState(null)
@@ -10,6 +14,7 @@ const Experience = () => {
         {
             title: 'IT Quality Assurance',
             company: 'PT Global Loyalty Indonesia (Alfagift)',
+            logo: logoAlfagift,
             period: 'Oct 2025 – Present',
             location: 'Onsite, Indonesia',
             type: 'Internship',
@@ -26,6 +31,7 @@ const Experience = () => {
         {
             title: 'Software Quality Assurance',
             company: 'PT Sumber Trijaya Lestari (Aksesmu)',
+            logo: logoAksesmu,
             period: 'Aug 2024 – Dec 2024',
             location: 'Onsite, Indonesia',
             type: 'Internship',
@@ -41,6 +47,7 @@ const Experience = () => {
         {
             title: 'Data Management',
             company: 'Telkom Indonesia',
+            logo: logoTelkomIndonesia,
             period: 'Jun 2024 – Aug 2024',
             location: 'Onsite, Indonesia',
             type: 'Internship',
@@ -55,6 +62,7 @@ const Experience = () => {
         {
             title: 'Analysis and Design Practicum Assistant',
             company: 'Telkom University',
+            logo: logoTelkomUniversity,
             period: 'Feb 2024 – Jun 2024',
             location: 'Onsite, Indonesia',
             type: 'Contract',
@@ -69,6 +77,7 @@ const Experience = () => {
         {
             title: 'Object Oriented Programming Practicum Assistant',
             company: 'Telkom University',
+            logo: logoTelkomUniversity,
             period: 'Aug 2023 – Dec 2023',
             location: 'Onsite, Indonesia',
             type: 'Contract',
@@ -100,34 +109,45 @@ const Experience = () => {
                                     onClick={() => toggle(index)}
                                     aria-expanded={isOpen}
                                 >
+                                    {/* Large logo on the left */}
+                                    {exp.logo && (
+                                        <div className="exp-logo-box">
+                                            <img
+                                                src={exp.logo}
+                                                alt={exp.company}
+                                                className="exp-logo-img"
+                                                onError={(e) => { e.target.parentElement.style.display = 'none' }}
+                                            />
+                                        </div>
+                                    )}
+
+                                    {/* Text info — left side */}
                                     <div className="exp-toggle-left">
-                                        <span className="exp-toggle-indicator">
-                                            <svg
-                                                width="12" height="12"
-                                                viewBox="0 0 24 24"
-                                                fill="none"
-                                                stroke="currentColor"
-                                                strokeWidth="2.5"
-                                                className={`exp-chevron ${isOpen ? 'exp-chevron--open' : ''}`}
-                                            >
-                                                <polyline points="9 18 15 12 9 6" />
-                                            </svg>
-                                        </span>
                                         <div className="exp-summary">
                                             <span className="exp-title">{exp.title}</span>
-                                            <span className="exp-company-inline">
-                                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                                    <rect x="2" y="7" width="20" height="14" rx="2" />
-                                                    <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
-                                                </svg>
-                                                {exp.company}
-                                            </span>
+                                            <span className="exp-company-name">{exp.company}</span>
                                         </div>
                                     </div>
+
+                                    {/* Period + Type badges — right side */}
                                     <div className="exp-badges">
                                         <span className="period">{exp.period}</span>
                                         <span className="type">{exp.type}</span>
                                     </div>
+
+                                    {/* Chevron */}
+                                    <span className="exp-toggle-indicator">
+                                        <svg
+                                            width="12" height="12"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            strokeWidth="2.5"
+                                            className={`exp-chevron ${isOpen ? 'exp-chevron--open' : ''}`}
+                                        >
+                                            <polyline points="9 18 15 12 9 6" />
+                                        </svg>
+                                    </span>
                                 </button>
 
                                 {/* Collapsible content */}

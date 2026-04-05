@@ -32,7 +32,21 @@
 }
 
 .tech-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    transition: opacity 200ms ease;
+}
+
+.tech-icon-emoji {
     font-size: 1rem;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.tech-icon-fallback {
+    font-size: 0.7rem;
+    color: #555;
     line-height: 1;
 }
 
@@ -43,6 +57,15 @@
     font-weight: 400;
     letter-spacing: 0.01em;
     white-space: nowrap;
+}
+
+.tech-badge:hover .tech-icon {
+    opacity: 1;
+    filter: brightness(1.2);
+}
+
+.tech-badge:hover .tech-icon-fallback {
+    color: #999;
 }
 
 .tech-badge:hover .tech-name {
